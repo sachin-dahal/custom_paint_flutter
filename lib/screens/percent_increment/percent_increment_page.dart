@@ -23,7 +23,6 @@ class _PercentIncrementPageState extends State<PercentIncrementPage>
           ..addListener(() {
             setState(() {
               percent = lerpDouble(percent, newPercent, _controller.value);
-              print(percent);
             });
           });
   }
@@ -64,7 +63,6 @@ class _PercentIncrementPageState extends State<PercentIncrementPage>
                         textAlign: TextAlign.center,
                       ),
                       onPressed: () {
-                        print(percent);
                         setState(() {
                           percent = newPercent;
                           newPercent += 10;
@@ -74,7 +72,6 @@ class _PercentIncrementPageState extends State<PercentIncrementPage>
                           }
                           _controller.forward(from: 0.0);
                         });
-                        print(percent);
                       },
                     ),
                   ),
@@ -85,5 +82,11 @@ class _PercentIncrementPageState extends State<PercentIncrementPage>
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
   }
 }
